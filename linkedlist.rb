@@ -21,6 +21,10 @@ class LinkedList
 		
 	end
 	
+	def plist
+		puts @head.data
+	end
+	
 	def prepend node
 	
 	end
@@ -68,6 +72,8 @@ class Node
 
 end
 
-node = Node.new(1)
-puts node.data
-puts node.next_node
+list = LinkedList.new
+list.append 1
+list.append 2
+list.append 3
+list.append 4
