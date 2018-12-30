@@ -67,3 +67,7 @@ class Node
 	end
 
 end
+
+node = Node.new(1)
+puts node.data
+puts node.next_node
