@@ -11,8 +11,9 @@ class LinkedList
 
 	def append data
 	
-		if @head.nil? 
-			@head = Node.new(data)	
+		if @head.nil? # List is empty
+			@head = Node.new(data)
+			@tail = @head	
 		else
 			new_node = Node.new(data)
 			new_node.next_node = @head
@@ -26,8 +27,9 @@ class LinkedList
 	
 	def prepend data
 		
-		if @tail.nil?
+		if @tail.nil? #List is empty
 			@tail = Node.new(data)
+			@head = @tail
 		else
 			new_node = Node.new(data)
 			@tail.next_node = new_node
@@ -47,23 +49,35 @@ class LinkedList
 			end
 			count += 1
 		end
-		
 	end
 	
 	def head
-	
+		@head
 	end
 	
 	def tail
-	
+		@tail
 	end
 	
-	def at index
-	
+	def at index #Assumes @head is index 0
+		current_node = @head
+		current_index = 0
+		if self.size > index
+			while !current_node.next_node.nil? 
+				return current_node if current_index == index
+				current_node = current_node.next_node
+				current_index += 1
+			end
+		else
+			return nil
+		end
+		return @tail
 	end
 	
 	def pop
-	
+		size = self.size
+		@tail = self.at(self.size - 2)
+		@tail.next_node = nil
 	end
 	
 	def contains?
@@ -97,3 +111,25 @@ list.append 4
 
 puts "Added 4 Nodes"
 puts "#size says LinkedList has #{list.size} nodes"
+
+list.append 5
+puts "Added another node"
+puts "#size says LinkedList has #{list.size} nodes"
+
+puts "@head data is #{list.head.data}"
+
+list.size # => 5
+puts "Node at index 3 contains the data: #{list.at(3).data}"
+
+puts "@tail data is #{list.tail.data}"
+list.pop
+puts "@tail data is #{list.tail.data}"
+
+# >> Added 4 Nodes
+# >> #size says LinkedList has 4 nodes
+# >> Added another node
+# >> #size says LinkedList has 5 nodes
+# >> @head data is 5
+# >> Node at index 3 contains the data: 2
+# >> @tail data is 1
+# >> @tail data is 2
