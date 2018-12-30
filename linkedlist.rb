@@ -36,7 +36,18 @@ class LinkedList
 	end
 	
 	def size
-	
+		count = 0
+		if @head.nil?
+			count
+		else
+			current_node = @head
+			while !current_node.next_node.nil?
+				count += 1
+				current_node = current_node.next_node
+			end
+			count += 1
+		end
+		
 	end
 	
 	def head
@@ -84,4 +95,5 @@ list.append 2
 list.append 3
 list.append 4
 
-list.plist
+puts "Added 4 Nodes"
+puts "#size says LinkedList has #{list.size} nodes"
