@@ -18,15 +18,21 @@ class LinkedList
 			new_node.next_node = @head
 			@head = new_node
 		end
-		
 	end
 	
 	def plist
 		puts @head.data
 	end
 	
-	def prepend node
-	
+	def prepend data
+		
+		if @tail.nil?
+			@tail = Node.new(data)
+		else
+			new_node = Node.new(data)
+			@tail.next_node = new_node
+			@tail = new_node
+		end
 	end
 	
 	def size
