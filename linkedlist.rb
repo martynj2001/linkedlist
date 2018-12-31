@@ -99,9 +99,22 @@ class LinkedList
 			index += 1
 		end
 		# Check @tail
-		return index if @tail.data == value
+		return index if current_node.data == value
 		# Not found, return nil	
 		return nil
+	end
+	
+	def to_s
+		slist = []
+		current_node = @head
+		while !current_node.next_node.nil? 
+			slist << current_node.data.to_s
+			current_node = current_node.next_node
+		end
+		slist << current_node.to_s
+		
+		slist.each {|a| p "( #{a} ) -> "}
+		
 	end
 end
 
@@ -140,6 +153,8 @@ puts "@tail data is #{list.tail.data}"
 
 puts "The list contains 3" if list.contains?(3)
 puts "The value 3 is at node #{list.find(3)}"
+
+list.to_s
 
 # >> Added 4 Nodes
 # >> #size says LinkedList has 4 nodes
