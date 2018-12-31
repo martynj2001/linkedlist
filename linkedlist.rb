@@ -80,16 +80,29 @@ class LinkedList
 		@tail.next_node = nil
 	end
 	
-	def contains?
-	
+	def contains? value
+		current_node = @head
+		while !current_node.next_node.nil? 
+			return true if current_node.data == value
+			current_node = current_node.next_node
+		end
+		return false
 	end
 	
-	def find data
+	def find value
 	
+		index = 0
+		current_node = @head
+		while !current_node.next_node.nil? 
+			return index if current_node.data == value
+			current_node = current_node.next_node
+			index += 1
+		end
+		# Check @tail
+		return index if @tail.data == value
+		# Not found, return nil	
+		return nil
 	end
-	
-	
-
 end
 
 class Node
