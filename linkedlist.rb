@@ -138,6 +138,9 @@ puts "@tail data is #{list.tail.data}"
 list.pop
 puts "@tail data is #{list.tail.data}"
 
+puts "The list contains 3" if list.contains?(3)
+puts "The value 3 is at node #{list.find(3)}"
+
 # >> Added 4 Nodes
 # >> #size says LinkedList has 4 nodes
 # >> Added another node
