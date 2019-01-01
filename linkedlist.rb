@@ -98,7 +98,7 @@ class LinkedList
 			index += 1
 		end
 		# Check @tail
-		return index if current_node.data == value
+		return index if node.data == value
 		# Not found, return nil	
 		return nil
 	end
