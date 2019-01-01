@@ -106,15 +106,19 @@ class LinkedList
 	
 	def to_s
 		slist = []
-		current_node = @head
-		while !current_node.next_node.nil? 
-			slist << current_node.data.to_s
-			current_node = current_node.next_node
-		end
-		slist << current_node.to_s
+		node = self.each_node { slist << current_node.data.to_s }
+		slist << node.to_s
 		
 		slist.each {|a| p "( #{a} ) -> "}
 		
+	end
+	
+	def each_node
+		current_node = @head
+		while !current_node.next_node.nil?
+			yield
+			current_node = current_node.next_node
+		end
 	end
 end
 
