@@ -94,7 +94,6 @@ class LinkedList
 		index = 0
 		node = self.each_node do |n| 
 			return index if n.data == value
-			current_node = current_node.next_node
 			index += 1
 		end
 		# Check @tail
