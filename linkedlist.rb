@@ -92,9 +92,8 @@ class LinkedList
 	def find value
 	
 		index = 0
-		current_node = @head
-		while !current_node.next_node.nil? 
-			return index if current_node.data == value
+		node = self.each_node do |n| 
+			return index if n.data == value
 			current_node = current_node.next_node
 			index += 1
 		end
@@ -107,7 +106,7 @@ class LinkedList
 	def to_s
 		slist = []
 		node = self.each_node { |n| slist << n.data.to_s }
-		slist << node.to_s
+		slist << node.data.to_s
 		
 		slist.each {|a| p "( #{a} ) -> "}
 		
@@ -119,6 +118,7 @@ class LinkedList
 			yield (current_node)
 			current_node = current_node.next_node
 		end
+		current_node
 	end
 end
 
